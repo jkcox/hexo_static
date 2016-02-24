@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   
-  <title>John Cox - Web Developer</title>
+  <title>Archives: 2016/2 | John Cox - Web Developer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="A collection of projects and programming tips/tricks.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="John Cox - Web Developer">
-<meta property="og:url" content="http://jcox.pw/index.html">
+<meta property="og:url" content="http://jcox.pw/archives/2016/02/index.html">
 <meta property="og:site_name" content="John Cox - Web Developer">
 <meta property="og:description" content="A collection of projects and programming tips/tricks.">
 <meta name="twitter:card" content="summary">
@@ -50,10 +50,10 @@
     <div class="collapse navbar-collapse" id="main-menu-navbar">
       <ul class="nav navbar-nav">
         
-          <li><a class="active"
+          <li><a class=""
                  href="/index.html">Home</a></li>
         
-          <li><a class=""
+          <li><a class="active"
                  href="/archives/">Archives</a></li>
         
           <li><a class=""
@@ -84,66 +84,37 @@
         <div class="col-sm-8 blog-main">
           
   
-    <article id="post-SQL-Date-Casting-Ignoring-the-Year" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <header class="article-header">
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2016" class="archive-year">2016</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <header class="archive-article-header">
     
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/02/24/SQL-Date-Casting-Ignoring-the-Year/">SQL Date Casting, Ignoring the Year</a>
+      <a class="archive-article-title" href="/2016/02/24/SQL-Date-Casting-Ignoring-the-Year/">SQL Date Casting, Ignoring the Year</a>
     </h1>
   
 
 
-  </header>
-
-  <div class="article-meta">
     <div class="article-datetime">
-  <a href="/2016/02/24/SQL-Date-Casting-Ignoring-the-Year/" class="article-date"><time datetime="2016-02-24T17:39:00.000Z" itemprop="datePublished">2016-02-24</time></a>
+  <a href="/2016/02/24/SQL-Date-Casting-Ignoring-the-Year/" class="archive-article-date"><time datetime="2016-02-24T17:39:00.000Z" itemprop="datePublished">February 24th</time></a>
 </div>
 
-    
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Web-Development-Programming/">Web Development, Programming</a>
-  </div>
-
-
-  </div>
-  <div class="article-inner">
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>We were building an automated email that would send every Monday and let all employees know who had a birthday or work anniversary that week.</p>
-<p>We quickly came across an issue with the data that required some brainstorming (and googling). Each record also had a random year, so our SQL query would need to ignore the year. </p>
-<p>Here is an example of how to use a query to find a date in a SQL database, ignoring the year. In this example we are looking for birthdays within a week.</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT first_name, last_name, birthday, photo_url&#10;FROM birthday_db&#10;WHERE DATEADD( Year, DATEPART( Year, GETDATE()) &#8211; DATEPART( Year, birthday), birthday)&#10;BETWEEN CONVERT( DATE, GETDATE())&#10;AND CONVERT( DATE, GETDATE() + 6)</span><br></pre></td></tr></table></figure>
-<p>The birthday is shifted to current year by adding the number of years between birthday and the current year. It does not matter if someone is born in 1970 or 1980, anyone within the specified 7 days will be returned.  After that, a simple date range comparison is used. <code>CONVERT()</code> allows us to ignore the timestamp and only use the date portion. Date format is YYYY-MM-DD, where <code>GETDATE()</code>returns YYYY-MM-DD HH:MI:SS.</p>
-
-      
-    </div>
-
-    
-      
-
-    
-
-    <footer class="article-footer">
-      <a data-url="http://jcox.pw/2016/02/24/SQL-Date-Casting-Ignoring-the-Year/" data-id="cil1d33i60000ar4psc15hscv" class="article-share-link">
-        <i class="fa fa-share"></i> Share
-      </a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
-
-
-    </footer>
-  </div>
-  
+  </header>
 </article>
 
-
-
+  
+  
+    </div></section>
   
 
 
