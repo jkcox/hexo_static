@@ -80,6 +80,67 @@
         <div class="col-sm-8 blog-main">
           
   
+    <article id="post-SQL-Date-Casting-Ignoring-the-Year" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <header class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/24/SQL-Date-Casting-Ignoring-the-Year/">SQL Date Casting, Ignoring the Year</a>
+    </h1>
+  
+
+
+  </header>
+
+  <div class="article-meta">
+    <div class="article-datetime">
+  <a href="/2016/02/24/SQL-Date-Casting-Ignoring-the-Year/" class="article-date"><time datetime="2016-02-24T17:39:00.000Z" itemprop="datePublished">2016-02-24</time></a>
+</div>
+
+    
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Web-Development-Programming/">Web Development, Programming</a>
+  </div>
+
+
+  </div>
+  <div class="article-inner">
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>We were building an automated email that would send every Monday and let all employees know who had a birthday or work anniversary that week.</p>
+<p>We quickly came across an issue with the data that required some brainstorming (and googling). Each record also had a random year, so our SQL query would need to ignore the year. </p>
+<p>Here is an example of how to use a query to find a date in a SQL database, ignoring the year. In this example we are looking for birthdays within a week.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT first_name, last_name, birthday, photo_url&#10;FROM birthday_db&#10;WHERE DATEADD( Year, DATEPART( Year, GETDATE()) &#8211; DATEPART( Year, birthday), birthday)&#10;BETWEEN CONVERT( DATE, GETDATE())&#10;AND CONVERT( DATE, GETDATE() + 6)</span><br></pre></td></tr></table></figure>
+<p>The birthday is shifted to current year by adding the number of years between birthday and the current year. It does not matter if someone is born in 1970 or 1980, anyone within the specified 7 days will be returned.  After that, a simple date range comparison is used. <code>CONVERT()</code> allows us to ignore the timestamp and only use the date portion. Date format is YYYY-MM-DD, where <code>GETDATE()</code>returns YYYY-MM-DD HH:MI:SS.</p>
+
+      
+    </div>
+
+    
+      
+
+    
+
+    <footer class="article-footer">
+      <a data-url="http://jcox.pw/2016/02/24/SQL-Date-Casting-Ignoring-the-Year/" data-id="cil15hwcj0000n54p2ncxp5v9" class="article-share-link">
+        <i class="fa fa-share"></i> Share
+      </a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
+
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
 
   <header class="article-header">
@@ -95,7 +156,7 @@
 
   <div class="article-meta">
     <div class="article-datetime">
-  <a href="/2016/02/22/hello-world/" class="article-date"><time datetime="2016-02-22T23:18:52.000Z" itemprop="datePublished">2016-02-22</time></a>
+  <a href="/2016/02/22/hello-world/" class="article-date"><time datetime="2016-02-22T23:18:00.000Z" itemprop="datePublished">2016-02-22</time></a>
 </div>
 
     
@@ -106,15 +167,7 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <p>This is my very first post. This site will just be a collection of web development and programming tips and tricks that I stumble across that have either made my life easier or are just interesting.</p>
 
       
     </div>
@@ -125,7 +178,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="http://jcox.pw/2016/02/22/hello-world/" data-id="cikz2n6t20000kmp9gteqo59f" class="article-share-link">
+      <a data-url="http://jcox.pw/2016/02/22/hello-world/" data-id="cil15hwcy0005n54plmghpeub" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -154,17 +207,34 @@
 
 
   
+  <div class="sidebar-module">
+    <h4>Categories</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Web-Development-Programming/">Web Development, Programming</a><span class="sidebar-module-list-count">1</span></li></ul>
+  </div>
+
 
 
   
+  <div class="sidebar-module">
+    <h4>Tags</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/SQL/">SQL</a><span class="sidebar-module-list-count">1</span></li></ul>
+  </div>
+
 
 
   
+  <div class="sidebar-module">
+    <h4>Tag Cloud</h4>
+    <p class="tagcloud">
+      <a href="/tags/SQL/" style="font-size: 10px;">SQL</a>
+    </p>
+  </div>
+
 
   
   <div class="sidebar-module">
     <h4>Archives</h4>
-    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/02/">February 2016</a><span class="sidebar-module-list-count">1</span></li></ul>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/02/">February 2016</a><span class="sidebar-module-list-count">2</span></li></ul>
   </div>
 
 
@@ -173,6 +243,10 @@
   <div class="sidebar-module">
     <h4>Recents</h4>
     <ul class="sidebar-module-list">
+      
+        <li>
+          <a href="/2016/02/24/SQL-Date-Casting-Ignoring-the-Year/">SQL Date Casting, Ignoring the Year</a>
+        </li>
       
         <li>
           <a href="/2016/02/22/hello-world/">Hello World</a>
